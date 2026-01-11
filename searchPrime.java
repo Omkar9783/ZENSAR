@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class searchPrime {
     public static void main(String[] args) {
@@ -21,17 +22,19 @@ public class searchPrime {
         System.out.println("\n1. Normal Method (Trial Division):");
         normalSieve(start, end);
 
-        System.out.println("\n2. Sieve of Eratosthenes:");
+        System.out.println("\n2. Sieve of Eratosthenes (Boolean Array):");
         eratosthenesSieve(start, end);
 
-        System.out.println("\n3. Linear Sieve:");
+        System.out.println("\n3. Linear Sieve (O(N)):");
         linearSieve(start, end);
+
+        System.out.println("\n4. Manual Deletion Sieve (Literal Removal):");
+        manualDeletionSieve(start, end);
     }
 
     /**
      * Method 1: Normal Trial Division
-     * Time Complexity (TC): O(N^2) - Two nested loops from start to end and divisor check.
-     * Space Complexity (SC): O(1) - No extra space used besides simple variables.
+     * TC: O(N^2), SC: O(1)
      */
     public static void normalSieve(int start, int end) {
         for (int i = start; i <= end; i++) {
@@ -49,9 +52,8 @@ public class searchPrime {
     }
 
     /**
-     * Method 2: Sieve of Eratosthenes
-     * Time Complexity (TC): O(N log log N) - Efficiently marks multiples.
-     * Space Complexity (SC): O(N) - Uses a boolean array of size N+1.
+     * Method 2: Sieve of Eratosthenes (Optimized with marking)
+     * TC: O(N log log N), SC: O(N)
      */
     public static void eratosthenesSieve(int start, int end) {
         if (end < 2) return;
@@ -74,8 +76,7 @@ public class searchPrime {
 
     /**
      * Method 3: Linear Sieve
-     * Time Complexity (TC): O(N) - Every composite number is visited exactly once.
-     * Space Complexity (SC): O(N) - Uses minPrime array and primes ArrayList.
+     * TC: O(N), SC: O(N)
      */
     public static void linearSieve(int start, int end) {
         if (end < 2) return;
@@ -95,6 +96,43 @@ public class searchPrime {
 
         for (int p : primes) {
             if (p >= start) System.out.print(p + " ");
+        }
+        System.out.println();
+    }
+
+    /**
+     * Method 4: Manual Deletion Sieve
+     * Logic: Literally "removes" multiples from a list one by one.
+     * Time Complexity (TC): O(N * (N/log N)) - Slow due to list shifting during removal.
+     * Space Complexity (SC): O(N) - Uses an ArrayList to store all numbers.
+     */
+    public static void manualDeletionSieve(int start, int end) {
+        if (end < 2) return;
+        
+        // 1. Fill a list from 2 to end
+        ArrayList<Integer> nums = new ArrayList<>();
+        for (int i = 2; i <= end; i++) nums.add(i);
+
+        // 2. Start from first prime (2)
+        for (int i = 0; i < nums.size(); i++) {
+            int currentPrime = nums.get(i);
+            
+            // 3. Literally remove all multiples of currentPrime that come AFTER it
+            Iterator<Integer> it = nums.iterator();
+            while (it.hasNext()) {
+                int nextVal = it.next();
+                if (nextVal > currentPrime && nextVal % currentPrime == 0) {
+                    it.remove(); // This is the "removal" step you described
+                }
+            }
+            
+            // Optimization: Stop if currentPrime exceeds sqrt(end)
+            if (currentPrime * currentPrime > end) break;
+        }
+
+        // 4. Print remaining result in range
+        for (int n : nums) {
+            if (n >= start) System.out.print(n + " ");
         }
         System.out.println();
     }
