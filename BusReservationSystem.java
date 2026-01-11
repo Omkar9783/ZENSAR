@@ -38,7 +38,7 @@ class MyThread extends Thread {
     }
 }
 
-public class mt {
+public class BusReservationSystem {
     public static void main(String[] args) {
         BusSeat b = new BusSeat();
 

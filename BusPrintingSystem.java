@@ -31,7 +31,7 @@ public class NKO_103 extends Thread {
 
 }
 
-public class mt2 {
+public class BusPrintingSystem {
 
     public static void main(String args[]{
 

@@ -15,7 +15,12 @@ public class NKO_306 {
         Statement stmt=conn.createStatement();
         String sqlQuery="Create Database "=dbName
 
-        
+        stmt.executeUpdate(sqlQuery);
+System.out.println("DATABASE CREATED SUCCESSFULLY");
+
+conn.close();   
+
+
 
         }
         catch(Exception e){
