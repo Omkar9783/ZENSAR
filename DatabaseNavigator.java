@@ -112,13 +112,13 @@ public class DatabaseNavigator extends JFrame implements ActionListener{
                 displayRecord();
             } else if (e.getSource() == b2) {
                 // Next button - agle record pe jao
-                if (!rs.isLast()) {  // agar last record nahi hai to hi aage jao
+                if (!rs.isLast()) { // agar last record nahi hai to hi aage jao
                     rs.next();
                     displayRecord();
                 }
             } else if (e.getSource() == b3) {
                 // Previous button - pichle record pe jao
-                if (!rs.isFirst()) {  // agar first record nahi hai to hi peeche jao
+                if (!rs.isFirst()) { // agar first record nahi hai to hi peeche jao
                     rs.previous();
                     displayRecord();
                 }
@@ -127,13 +127,23 @@ public class DatabaseNavigator extends JFrame implements ActionListener{
                 rs.last();
                 displayRecord();
             }
-        } catch (SQLException ex) {
+        }
+        
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
         // Program yaha se start hota hai
-        new DatabaseNavigator();
+        DatabaseNavigator dn =new DatabaseNavigator();
+dn.setVisible(true);
+dn.setSize(600, 600);
+dn.addWindowFocusListener(new WindowAdapter() {
+    public void windowClosing(WindowEvent e) {
+        System.exit(0);
+    }
+});
+        
     }
 }

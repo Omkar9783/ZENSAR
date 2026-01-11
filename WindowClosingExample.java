@@ -16,7 +16,7 @@ public class WindowClosingExample extends Frame {
         L = new Label("Window Closing Example");
         this.add(L);
 
-        setTitle("NKOCET");
+        setTitle("ZENSAR");
         setSize(300, 300);
         setVisible(true);
 

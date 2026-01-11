@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class SetupATMDB {
     private static final String URL = "jdbc:mysql://localhost:3306/";
-    private static final String DB_NAME = "ATM_DB";
+    private static final String DB_NAME = "ZENSAR_JAVA";
     private static final String USER = "root";
     private static final String PASS = "omkar@123";
 

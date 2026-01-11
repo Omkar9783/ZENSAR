@@ -22,7 +22,7 @@ Some programs require MySQL database. Default credentials:
 - **Host:** localhost:3306
 - **Username:** root
 - **Password:** omkar@123
-- **Databases:** `ZENSAR_JAVA`, `ATM_DB`
+- **Databases:** `ZENSAR_JAVA`
 
 ## 📁 Project Files
 
@@ -33,15 +33,15 @@ Some programs require MySQL database. Default credentials:
 | `DatabaseNavigator.java`         | GUI for navigating student records | ZENSAR_JAVA | First, Next, Previous, Last buttons to browse records     |
 | `StudentDatabaseOperations.java` | Database initialization script     | ZENSAR_JAVA | Creates database and inserts 10 student records (401-410) |
 | `DBViewer.java`                  | Universal database table viewer    | ZENSAR_JAVA | View any table with dropdown selection                    |
-| `CreateDatabase.java`            | Simple database creator            | NKOCET_TE   | Creates new database                                      |
+| `CreateDatabase.java`            | Simple database creator            | ZENSAR_JAVA | Creates new database                                      |
 | `TestDB.java`                    | Connection test utility            | -           | Verifies MySQL connection and displays version            |
 
 ### ATM Banking System
 
-| File Name         | Description              | Purpose                                                             |
-| ----------------- | ------------------------ | ------------------------------------------------------------------- |
-| `ATM.java`        | Complete ATM application | Login, withdraw, deposit, balance inquiry with real-time DB updates |
-| `SetupATMDB.java` | ATM database setup       | Creates ATM_DB with sample accounts (12345/1234, 67890/5678)        |
+| File Name         | Description              | Purpose                                                                             |
+| ----------------- | ------------------------ | ----------------------------------------------------------------------------------- |
+| `ATM.java`        | Complete ATM application | Login, withdraw, deposit, balance inquiry with real-time DB updates                 |
+| `SetupATMDB.java` | ATM database setup       | Creates accounts table in ZENSAR_JAVA with sample accounts (12345/1234, 67890/5678) |
 
 ### GUI Examples
 
@@ -117,9 +117,9 @@ java -cp ".:lib/mysql-connector-j-9.1.0.jar" DBViewer
 | Step | Command                                                                        | Description                           |
 | ---- | ------------------------------------------------------------------------------ | ------------------------------------- |
 | 1    | `javac -cp ".:lib/mysql-connector-j-9.1.0.jar" SetupATMDB.java`                | Compile ATM setup                     |
-| 2    | `java -cp ".:lib/mysql-connector-j-9.1.0.jar" SetupATMDB`                      | Create ATM database                   |
+| 2    | `java -cp ".:lib/mysql-connector-j-9.1.0.jar" SetupATMDB`                      | Setup ATM tables in ZENSAR_JAVA       |
 | 3    | `javac -cp ".:lib/mysql-connector-j-9.1.0.jar" StudentDatabaseOperations.java` | Compile student DB setup              |
-| 4    | `java -cp ".:lib/mysql-connector-j-9.1.0.jar" StudentDatabaseOperations`       | Create student database               |
+| 4    | `java -cp ".:lib/mysql-connector-j-9.1.0.jar" StudentDatabaseOperations`       | Setup student tables in ZENSAR_JAVA   |
 | 5    | `javac -cp ".:lib/mysql-connector-j-9.1.0.jar" *.java`                         | Compile all programs                  |
 | 6    | Ready to run!                                                                  | Use commands above to run any program |
 
@@ -133,8 +133,6 @@ java -cp ".:lib/mysql-connector-j-9.1.0.jar" DBViewer
 | stds_no | INT (PK) | Student roll number |
 | stds_name | VARCHAR(100) | Student name |
 | stds_stipend | DOUBLE | Stipend amount |
-
-### ATM_DB Database
 
 **Table: accounts**
 | Column | Type | Description |
