@@ -62,10 +62,11 @@ Some programs require MySQL database. Default credentials:
 
 ### Utility Files
 
-| File Name                         | Type                 | Purpose                         |
-| --------------------------------- | -------------------- | ------------------------------- |
-| `LaunchDBViewer.command`          | Shell script (macOS) | One-click launcher for DBViewer |
-| `lib/mysql-connector-j-9.1.0.jar` | Library              | MySQL JDBC driver               |
+| File Name                         | Type                 | Purpose                                             |
+| --------------------------------- | -------------------- | --------------------------------------------------- |
+| `LaunchDBViewer.command`          | Shell script (macOS) | One-click launcher for DBViewer                     |
+| `searchPrime.java`                | Java Program         | Finds prime numbers in a range with optimized logic |
+| `lib/mysql-connector-j-9.1.0.jar` | Library              | MySQL JDBC driver                                   |
 
 ## 🚀 How to Run
 
