@@ -28,134 +28,44 @@ Some programs require MySQL database. Default credentials:
 
 ### Database Programs
 
-#### `DatabaseNavigator.java`
+| File Name                        | Description                        | Database    | Key Features                                              |
+| -------------------------------- | ---------------------------------- | ----------- | --------------------------------------------------------- |
+| `DatabaseNavigator.java`         | GUI for navigating student records | ZENSAR_JAVA | First, Next, Previous, Last buttons to browse records     |
+| `StudentDatabaseOperations.java` | Database initialization script     | ZENSAR_JAVA | Creates database and inserts 10 student records (401-410) |
+| `DBViewer.java`                  | Universal database table viewer    | ZENSAR_JAVA | View any table with dropdown selection                    |
+| `CreateDatabase.java`            | Simple database creator            | NKOCET_TE   | Creates new database                                      |
+| `TestDB.java`                    | Connection test utility            | -           | Verifies MySQL connection and displays version            |
 
-Database navigation GUI with First, Next, Previous, and Last buttons to browse student records.
+### ATM Banking System
 
-- **Features:** Navigate through student database records
-- **Database:** ZENSAR_JAVA
-- **Table:** stds_nkocet
-- **Run:** `java -cp ".:lib/mysql-connector-j-9.1.0.jar" DatabaseNavigator`
-
-#### `StudentDatabaseOperations.java`
-
-Creates and populates the student database with sample data.
-
-- **Purpose:** Database initialization script
-- **Creates:** ZENSAR_JAVA database with stds_nkocet table
-- **Inserts:** 10 student records (Roll No 401-410)
-- **Run:** `java -cp ".:lib/mysql-connector-j-9.1.0.jar" StudentDatabaseOperations`
-
-#### `DBViewer.java`
-
-GUI application to view and browse MySQL database tables.
-
-- **Features:** Select and view any table from ZENSAR_JAVA database
-- **Run:** `java -cp ".:lib/mysql-connector-j-9.1.0.jar" DBViewer`
-- **Launcher:** Double-click `LaunchDBViewer.command` (macOS)
-
-#### `CreateDatabase.java`
-
-Simple database creation utility.
-
-- **Purpose:** Creates NKOCET_TE database
-- **Run:** `java -cp ".:lib/mysql-connector-j-9.1.0.jar" CreateDatabase`
-
-### ATM System
-
-#### `ATM.java`
-
-Complete ATM banking system with database backend.
-
-- **Features:**
-  - Login authentication
-  - Checking and Saving accounts
-  - Withdraw, Deposit, Balance inquiry
-  - Real-time database updates
-- **Database:** ATM_DB
-- **Run:** `java -cp ".:lib/mysql-connector-j-9.1.0.jar" ATM`
-
-#### `SetupATMDB.java`
-
-ATM database initialization script.
-
-- **Purpose:** Creates ATM_DB database and accounts table
-- **Sample Accounts:**
-  - Customer: 12345, PIN: 1234
-  - Customer: 67890, PIN: 5678
-- **Run:** `java -cp ".:lib/mysql-connector-j-9.1.0.jar" SetupATMDB`
+| File Name         | Description              | Purpose                                                             |
+| ----------------- | ------------------------ | ------------------------------------------------------------------- |
+| `ATM.java`        | Complete ATM application | Login, withdraw, deposit, balance inquiry with real-time DB updates |
+| `SetupATMDB.java` | ATM database setup       | Creates ATM_DB with sample accounts (12345/1234, 67890/5678)        |
 
 ### GUI Examples
 
-#### `CardLayoutExample.java`
-
-Demonstrates CardLayout manager with switchable panels.
-
-- **Features:** Toggle between Numbers and Alphabets panels
-- **Concept:** CardLayout, ActionListener
-- **Run:** `java CardLayoutExample`
-
-#### `FlowLayoutExample.java`
-
-Form layout example using FlowLayout.
-
-- **Components:** Labels, TextFields, Buttons
-- **Layout:** FlowLayout
-- **Run:** `java FlowLayoutExample`
-
-#### `ButtonExample.java`
-
-Basic AWT button demonstration.
-
-- **Purpose:** Simple button creation and positioning
-- **Run:** `java ButtonExample`
-
-#### `WindowClosingExample.java`
-
-Demonstrates window event handling.
-
-- **Concept:** WindowAdapter, WindowEvent
-- **Run:** `java WindowClosingExample`
-
-#### `Calculator.java`
-
-GUI calculator with basic arithmetic operations.
-
-- **Features:** Addition, Subtraction, Multiplication, Division
-- **Layout:** GridLayout (4x4)
-- **Run:** `java Calculator`
+| File Name                   | Layout Manager   | Description                           | Key Concepts                          |
+| --------------------------- | ---------------- | ------------------------------------- | ------------------------------------- |
+| `CardLayoutExample.java`    | CardLayout       | Switchable panels (Numbers/Alphabets) | Panel switching, ActionListener       |
+| `FlowLayoutExample.java`    | FlowLayout       | Form with labels and text fields      | Basic form layout                     |
+| `ButtonExample.java`        | null (absolute)  | Simple button demonstration           | AWT basics, setBounds                 |
+| `WindowClosingExample.java` | BorderLayout     | Window event handling                 | WindowAdapter, WindowEvent            |
+| `Calculator.java`           | GridLayout (4x4) | Basic calculator                      | Arithmetic operations, event handling |
 
 ### Multithreading Programs
 
-#### `BusReservationSystem.java`
-
-Thread-safe bus seat booking system.
-
-- **Concept:** Synchronized methods, Thread safety
-- **Features:** Prevents double booking using synchronization
-- **Run:** `java BusReservationSystem`
-
-#### `BusPrintingSystem.java`
-
-Demonstrates thread execution and synchronization.
-
-- **Concept:** Thread lifecycle, synchronized blocks
-- **Run:** `java BusPrintingSystem`
+| File Name                   | Concept              | Description                                               |
+| --------------------------- | -------------------- | --------------------------------------------------------- |
+| `BusReservationSystem.java` | Synchronized methods | Thread-safe seat booking system preventing double booking |
+| `BusPrintingSystem.java`    | Synchronized blocks  | Thread lifecycle and synchronization demonstration        |
 
 ### Utility Files
 
-#### `TestDB.java`
-
-Database connection test utility.
-
-- **Purpose:** Verify MySQL connection and display version
-- **Run:** `java -cp ".:lib/mysql-connector-j-9.1.0.jar" TestDB`
-
-#### `LaunchDBViewer.command`
-
-macOS launcher script for DBViewer.
-
-- **Usage:** Double-click to compile and run DBViewer
+| File Name                         | Type                 | Purpose                         |
+| --------------------------------- | -------------------- | ------------------------------- |
+| `LaunchDBViewer.command`          | Shell script (macOS) | One-click launcher for DBViewer |
+| `lib/mysql-connector-j-9.1.0.jar` | Library              | MySQL JDBC driver               |
 
 ## 🚀 How to Run
 
@@ -171,19 +81,68 @@ javac *.java
 java ClassName
 ```
 
+**Examples:**
+
+```bash
+java Calculator
+java CardLayoutExample
+java BusReservationSystem
+```
+
 ### Run Programs With Database
 
 ```bash
+# macOS/Linux
 java -cp ".:lib/mysql-connector-j-9.1.0.jar" ClassName
-```
 
-### Windows Users
-
-On Windows, use semicolon (`;`) instead of colon (`:`) in classpath:
-
-```bash
+# Windows
 java -cp ".;lib/mysql-connector-j-9.1.0.jar" ClassName
 ```
+
+**Examples:**
+
+```bash
+# Setup databases first
+java -cp ".:lib/mysql-connector-j-9.1.0.jar" SetupATMDB
+java -cp ".:lib/mysql-connector-j-9.1.0.jar" StudentDatabaseOperations
+
+# Run applications
+java -cp ".:lib/mysql-connector-j-9.1.0.jar" ATM
+java -cp ".:lib/mysql-connector-j-9.1.0.jar" DatabaseNavigator
+java -cp ".:lib/mysql-connector-j-9.1.0.jar" DBViewer
+```
+
+### Quick Start Guide
+
+| Step | Command                                                                        | Description                           |
+| ---- | ------------------------------------------------------------------------------ | ------------------------------------- |
+| 1    | `javac -cp ".:lib/mysql-connector-j-9.1.0.jar" SetupATMDB.java`                | Compile ATM setup                     |
+| 2    | `java -cp ".:lib/mysql-connector-j-9.1.0.jar" SetupATMDB`                      | Create ATM database                   |
+| 3    | `javac -cp ".:lib/mysql-connector-j-9.1.0.jar" StudentDatabaseOperations.java` | Compile student DB setup              |
+| 4    | `java -cp ".:lib/mysql-connector-j-9.1.0.jar" StudentDatabaseOperations`       | Create student database               |
+| 5    | `javac -cp ".:lib/mysql-connector-j-9.1.0.jar" *.java`                         | Compile all programs                  |
+| 6    | Ready to run!                                                                  | Use commands above to run any program |
+
+## 📊 Database Schema
+
+### ZENSAR_JAVA Database
+
+**Table: stds_nkocet**
+| Column | Type | Description |
+|--------|------|-------------|
+| stds_no | INT (PK) | Student roll number |
+| stds_name | VARCHAR(100) | Student name |
+| stds_stipend | DOUBLE | Stipend amount |
+
+### ATM_DB Database
+
+**Table: accounts**
+| Column | Type | Description |
+|--------|------|-------------|
+| customer_number | INT (PK) | Customer ID |
+| pin_number | INT | PIN for authentication |
+| checking_balance | DOUBLE | Checking account balance |
+| saving_balance | DOUBLE | Saving account balance |
 
 ## 📝 Notes
 
@@ -191,18 +150,18 @@ java -cp ".;lib/mysql-connector-j-9.1.0.jar" ClassName
 - Default database credentials are hardcoded (change in production)
 - Programs with GUI will open windows - ensure display is available
 - Hinglish comments are included for better understanding
+- On Windows, use semicolon (`;`) instead of colon (`:`) in classpath
 
 ## 🎓 Learning Outcomes
 
-This repository demonstrates:
-
-- ✅ JDBC database connectivity
-- ✅ Swing/AWT GUI development
-- ✅ Event handling (ActionListener, WindowListener)
-- ✅ Layout managers (FlowLayout, GridLayout, CardLayout, null layout)
-- ✅ Multithreading and synchronization
-- ✅ PreparedStatement for SQL injection prevention
-- ✅ ResultSet navigation (scrollable)
+| Category        | Skills Demonstrated                                                     |
+| --------------- | ----------------------------------------------------------------------- |
+| **Database**    | JDBC connectivity, PreparedStatement, ResultSet navigation (scrollable) |
+| **GUI**         | Swing/AWT components, Event handling (ActionListener, WindowListener)   |
+| **Layouts**     | FlowLayout, GridLayout, CardLayout, Absolute positioning                |
+| **Concurrency** | Multithreading, Synchronization, Thread safety                          |
+| **Security**    | SQL injection prevention using PreparedStatement                        |
+| **Design**      | MVC pattern, Separation of concerns                                     |
 
 ## 📧 Contact
 
@@ -210,4 +169,5 @@ For questions or issues, please open an issue in this repository.
 
 ---
 
-**Repository:** [ZENSAR](https://github.com/Omkar9783/ZENSAR)
+**Repository:** [ZENSAR](https://github.com/Omkar9783/ZENSAR)  
+**Last Updated:** January 2026
