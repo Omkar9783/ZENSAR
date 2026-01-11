@@ -1,10 +1,10 @@
 import java.awt.*;
 import java.awt.event.*;
 
-public class NKO_303 extends Frame {
+public class WindowClosingExample extends Frame {
     Label L;
 
-    NKO_303() {
+    WindowClosingExample() {
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
@@ -23,6 +23,6 @@ public class NKO_303 extends Frame {
     }
 
     public static void main(String[] args) {
-        new NKO_303();
+        new WindowClosingExample();
     }
 }

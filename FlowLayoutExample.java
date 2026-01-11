@@ -3,14 +3,14 @@ import javax.swing.*;
 
 import javax.swing.JFrame;
 
-public class NKO_304 extends JFrame {
+public class FlowLayoutExample extends JFrame {
 
     JLabel l1, l2;
     JTextField tf1, tf2;
     JButton b1, b2, b3;
     JFrame jf;
 
-    NKO_304() {
+    FlowLayoutExample() {
         jf = new JFrame("Flow Layout Example");
         jf.setSize(300, 150);
         l1 = new JLabel("Enter Name");
@@ -39,6 +39,6 @@ public class NKO_304 extends JFrame {
     }
 
     public static void main(String[] args) {
-        new NKO_304();
+        new FlowLayoutExample();
     }
 }

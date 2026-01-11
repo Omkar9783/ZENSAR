@@ -4,13 +4,13 @@ import javax.swing.*;
 
 
 
-public class NKO_305 extends JFrame implements ActionListener{
+public class CardLayoutExample extends JFrame implements ActionListener{
 
     JFrame jf;
     JPanel pp;
     CardLayout cd;
 
-    NKO_305(){
+    CardLayoutExample(){
         jf = new JFrame("CardLayout Example");
         cd = new CardLayout();
         
@@ -78,7 +78,7 @@ public class NKO_305 extends JFrame implements ActionListener{
 
 
     public static void main(String[] args) {
-        new NKO_305();
+        new CardLayoutExample();
     }
 
 

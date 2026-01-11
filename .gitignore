@@ -24,4 +24,7 @@
 hs_err_pid*
 
 # VS Code
+.vscode/
 
+# macOS
+.DS_Store

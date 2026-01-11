@@ -7,7 +7,7 @@ import java.sql.*;
 // import java.sql.ResultSet;
 
 
-public class NKO_401 {
+public class StudentDatabaseOperations {
     public static void main(String[] args) {
         String url="jdbc:mysql://localhost:3306/";
         String user="root";

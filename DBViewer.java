@@ -13,7 +13,7 @@ public class DBViewer extends JFrame {
     private Connection conn;
 
     // Configuration
-    private static final String URL = "jdbc:mysql://localhost:3306/"; // Add database name if known, else default
+    private static final String URL = "jdbc:mysql://localhost:3306/ZENSAR_JAVA"; // Add database name if known, else default
     private static final String USER = "root";
     private static final String PASS = "omkar@123";
 

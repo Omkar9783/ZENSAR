@@ -1,10 +1,10 @@
 import java.awt.*;
-import java.swing.*;
+import javax.swing.*;
 import java.sql.*;
 
-public class NKO_302 extends Frame {
+public class ButtonExample extends Frame {
 
-    NKO_302() {
+    ButtonExample() {
         // creating a button,which is present in predefined class Button
         Button B = new Button("Click");
         B.setBounds(30, 100, 100, 30);
@@ -19,6 +19,6 @@ public class NKO_302 extends Frame {
 
     public static void main(String[] args) {
         // calling constructor by allocating dynamic memory
-        new NKO_302();
+        new ButtonExample();
     }
 }
