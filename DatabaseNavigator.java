@@ -71,7 +71,7 @@ public class DatabaseNavigator extends JFrame implements ActionListener{
         b4.addActionListener(this); 
 
         // Database se connection banaya
-        String url = "jdbc:mysql://localhost:3306/ZENSAR_JAVA";
+        String url = "jdbc:mysql://localhost:3306/zensar";
         String user = "root";
         String password = "omkar@123";  // apna password yaha dala
         try {

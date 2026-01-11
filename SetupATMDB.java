@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class SetupATMDB {
     private static final String URL = "jdbc:mysql://localhost:3306/";
-    private static final String DB_NAME = "ZENSAR_JAVA";
+    private static final String DB_NAME = "zensar";
     private static final String USER = "root";
     private static final String PASS = "omkar@123";
 
@@ -16,6 +16,11 @@ public class SetupATMDB {
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
              Statement stmt = conn.createStatement()) {
+
+            // Cleanup old databases if they exist
+            System.out.println("Cleaning up old databases...");
+            stmt.executeUpdate("DROP DATABASE IF EXISTS ZENSAR_JAVA");
+            stmt.executeUpdate("DROP DATABASE IF EXISTS ATM_DB");
 
             // Create Database
             System.out.println("Creating database " + DB_NAME + "...");

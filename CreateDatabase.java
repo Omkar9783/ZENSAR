@@ -4,7 +4,7 @@ public class CreateDatabase {
         String url = "jdbc:mysql://localhost:3306/";
         String user = "root";
         String password = "omkar@123";
-        String dbName="ZENSAR_JAVA";
+        String dbName="zensar";
 
 
         try{

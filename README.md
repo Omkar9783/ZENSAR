@@ -22,26 +22,26 @@ Some programs require MySQL database. Default credentials:
 - **Host:** localhost:3306
 - **Username:** root
 - **Password:** omkar@123
-- **Databases:** `ZENSAR_JAVA`
+- **Databases:** `zensar`
 
 ## 📁 Project Files
 
 ### Database Programs
 
-| File Name                        | Description                        | Database    | Key Features                                              |
-| -------------------------------- | ---------------------------------- | ----------- | --------------------------------------------------------- |
-| `DatabaseNavigator.java`         | GUI for navigating student records | ZENSAR_JAVA | First, Next, Previous, Last buttons to browse records     |
-| `StudentDatabaseOperations.java` | Database initialization script     | ZENSAR_JAVA | Creates database and inserts 10 student records (401-410) |
-| `DBViewer.java`                  | Universal database table viewer    | ZENSAR_JAVA | View any table with dropdown selection                    |
-| `CreateDatabase.java`            | Simple database creator            | ZENSAR_JAVA | Creates new database                                      |
-| `TestDB.java`                    | Connection test utility            | -           | Verifies MySQL connection and displays version            |
+| File Name                        | Description                        | Database | Key Features                                          |
+| -------------------------------- | ---------------------------------- | -------- | ----------------------------------------------------- |
+| `DatabaseNavigator.java`         | GUI for navigating student records | zensar   | First, Next, Previous, Last buttons to browse records |
+| `StudentDatabaseOperations.java` | Database initialization script     | zensar   | Creates database and inserts 10 student records       |
+| `DBViewer.java`                  | Universal database table viewer    | zensar   | View any table with dropdown selection                |
+| `CreateDatabase.java`            | Simple database creator            | zensar   | Creates new database                                  |
+| `TestDB.java`                    | Connection test utility            | -        | Verifies MySQL connection and displays version        |
 
 ### ATM Banking System
 
-| File Name         | Description              | Purpose                                                                             |
-| ----------------- | ------------------------ | ----------------------------------------------------------------------------------- |
-| `ATM.java`        | Complete ATM application | Login, withdraw, deposit, balance inquiry with real-time DB updates                 |
-| `SetupATMDB.java` | ATM database setup       | Creates accounts table in ZENSAR_JAVA with sample accounts (12345/1234, 67890/5678) |
+| File Name         | Description              | Purpose                                                             |
+| ----------------- | ------------------------ | ------------------------------------------------------------------- |
+| `ATM.java`        | Complete ATM application | Login, withdraw, deposit, balance inquiry with real-time DB updates |
+| `SetupATMDB.java` | ATM database setup       | Creates accounts table in zensar database                           |
 
 ### GUI Examples
 
@@ -81,14 +81,6 @@ javac *.java
 java ClassName
 ```
 
-**Examples:**
-
-```bash
-java Calculator
-java CardLayoutExample
-java BusReservationSystem
-```
-
 ### Run Programs With Database
 
 ```bash
@@ -99,33 +91,20 @@ java -cp ".:lib/mysql-connector-j-9.1.0.jar" ClassName
 java -cp ".;lib/mysql-connector-j-9.1.0.jar" ClassName
 ```
 
-**Examples:**
-
-```bash
-# Setup databases first
-java -cp ".:lib/mysql-connector-j-9.1.0.jar" SetupATMDB
-java -cp ".:lib/mysql-connector-j-9.1.0.jar" StudentDatabaseOperations
-
-# Run applications
-java -cp ".:lib/mysql-connector-j-9.1.0.jar" ATM
-java -cp ".:lib/mysql-connector-j-9.1.0.jar" DatabaseNavigator
-java -cp ".:lib/mysql-connector-j-9.1.0.jar" DBViewer
-```
-
 ### Quick Start Guide
 
 | Step | Command                                                                        | Description                           |
 | ---- | ------------------------------------------------------------------------------ | ------------------------------------- |
 | 1    | `javac -cp ".:lib/mysql-connector-j-9.1.0.jar" SetupATMDB.java`                | Compile ATM setup                     |
-| 2    | `java -cp ".:lib/mysql-connector-j-9.1.0.jar" SetupATMDB`                      | Setup ATM tables in ZENSAR_JAVA       |
+| 2    | `java -cp ".:lib/mysql-connector-j-9.1.0.jar" SetupATMDB`                      | Setup ATM tables in zensar            |
 | 3    | `javac -cp ".:lib/mysql-connector-j-9.1.0.jar" StudentDatabaseOperations.java` | Compile student DB setup              |
-| 4    | `java -cp ".:lib/mysql-connector-j-9.1.0.jar" StudentDatabaseOperations`       | Setup student tables in ZENSAR_JAVA   |
+| 4    | `java -cp ".:lib/mysql-connector-j-9.1.0.jar" StudentDatabaseOperations`       | Setup student tables in zensar        |
 | 5    | `javac -cp ".:lib/mysql-connector-j-9.1.0.jar" *.java`                         | Compile all programs                  |
 | 6    | Ready to run!                                                                  | Use commands above to run any program |
 
 ## 📊 Database Schema
 
-### ZENSAR_JAVA Database
+### zensar Database
 
 **Table: stds_nkocet**
 | Column | Type | Description |
@@ -146,7 +125,6 @@ java -cp ".:lib/mysql-connector-j-9.1.0.jar" DBViewer
 
 - All database programs use MySQL Connector/J 9.1.0
 - Default database credentials are hardcoded (change in production)
-- Programs with GUI will open windows - ensure display is available
 - Hinglish comments are included for better understanding
 - On Windows, use semicolon (`;`) instead of colon (`:`) in classpath
 

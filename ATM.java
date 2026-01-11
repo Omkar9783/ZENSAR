@@ -141,7 +141,7 @@ class Account {
     DecimalFormat moneyFormat = new DecimalFormat("'$'###,##0.00");
 
     // DB config
-    private static final String URL = "jdbc:mysql://localhost:3306/ZENSAR_JAVA";
+    private static final String URL = "jdbc:mysql://localhost:3306/zensar";
     private static final String USER = "root";
     private static final String PASS = "omkar@123";
 

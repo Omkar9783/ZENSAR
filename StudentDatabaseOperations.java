@@ -1,13 +1,13 @@
 import java.sql.*;
 
 // Ye program students ka database banata hai aur usme data insert karta hai
-// ZENSAR_JAVA database me stds_nkocet table create hoti hai
+// zensar database me stds_nkocet table create hoti hai
 public class StudentDatabaseOperations {
     public static void main(String[] args) {
         String url="jdbc:mysql://localhost:3306/";
         String user="root";
         String password="omkar@123";  // MySQL ka password
-        String dbName = "ZENSAR_JAVA";
+        String dbName = "zensar";
 try{
 
     Class.forName("com.mysql.cj.jdbc.Driver");  // MySQL driver load kiya
@@ -16,6 +16,10 @@ try{
     System.out.println("Database connected successfully");
 
     Statement stmt=con.createStatement();
+    // Cleanup old databases
+    stmt.executeUpdate("drop database if exists ZENSAR_JAVA");
+    stmt.executeUpdate("drop database if exists ATM_DB");
+
     // Pehle database banaya agar exist nahi karta
     stmt.executeUpdate("create database if not exists " + dbName);
     stmt.executeUpdate("use " + dbName);  // database use karne ke liye
