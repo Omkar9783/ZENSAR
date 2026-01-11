@@ -18,26 +18,25 @@ public class searchPrime {
 
         System.out.println("\n--- Comparison of Prime Finding Algorithms ---");
 
-        // 1. Normal Method (O(N^2))
-        System.out.println("\n1. Normal Method (Trial Division O(N^2)):");
+        System.out.println("\n1. Normal Method (Trial Division):");
         normalSieve(start, end);
 
-        // 2. Sieve of Eratosthenes (O(N log log N))
-        System.out.println("\n2. Sieve of Eratosthenes (O(N log log N)):");
+        System.out.println("\n2. Sieve of Eratosthenes:");
         eratosthenesSieve(start, end);
 
-        // 3. Linear Sieve (O(N))
-        System.out.println("\n3. Linear Sieve (O(N)):");
+        System.out.println("\n3. Linear Sieve:");
         linearSieve(start, end);
     }
 
-    // Method 1: Normal Trial Division (2 for loops, O(N^2))
+    /**
+     * Method 1: Normal Trial Division
+     * Time Complexity (TC): O(N^2) - Two nested loops from start to end and divisor check.
+     * Space Complexity (SC): O(1) - No extra space used besides simple variables.
+     */
     public static void normalSieve(int start, int end) {
-        // Bahar ka loop range ke liye
         for (int i = start; i <= end; i++) {
             if (i <= 1) continue;
             boolean isPrime = true;
-            // Andar ka loop divisor check karne ke liye (Naive O(N) check inside O(N) loop)
             for (int j = 2; j < i; j++) {
                 if (i % j == 0) {
                     isPrime = false;
@@ -49,7 +48,11 @@ public class searchPrime {
         System.out.println();
     }
 
-    // Method 2: Sieve of Eratosthenes (O(N log log N))
+    /**
+     * Method 2: Sieve of Eratosthenes
+     * Time Complexity (TC): O(N log log N) - Efficiently marks multiples.
+     * Space Complexity (SC): O(N) - Uses a boolean array of size N+1.
+     */
     public static void eratosthenesSieve(int start, int end) {
         if (end < 2) return;
         boolean[] isPrime = new boolean[end + 1];
@@ -69,7 +72,11 @@ public class searchPrime {
         System.out.println();
     }
 
-    // Method 3: Linear Sieve (O(N))
+    /**
+     * Method 3: Linear Sieve
+     * Time Complexity (TC): O(N) - Every composite number is visited exactly once.
+     * Space Complexity (SC): O(N) - Uses minPrime array and primes ArrayList.
+     */
     public static void linearSieve(int start, int end) {
         if (end < 2) return;
         int[] minPrime = new int[end + 1];
