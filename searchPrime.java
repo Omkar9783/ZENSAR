@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 public class searchPrime {
     public static void main(String[] args) {
@@ -30,6 +31,9 @@ public class searchPrime {
 
         System.out.println("\n4. Manual Deletion Sieve (Literal Removal):");
         manualDeletionSieve(start, end);
+
+        System.out.println("\n5. Boolean List Sieve (Object-based Marking):");
+        booleanListSieve(start, end);
     }
 
     /**
@@ -103,36 +107,65 @@ public class searchPrime {
     /**
      * Method 4: Manual Deletion Sieve
      * Logic: Literally "removes" multiples from a list one by one.
-     * Time Complexity (TC): O(N * (N/log N)) - Slow due to list shifting during removal.
-     * Space Complexity (SC): O(N) - Uses an ArrayList to store all numbers.
+     * TC: O(N^2) due to list shifts during removal.
      */
     public static void manualDeletionSieve(int start, int end) {
         if (end < 2) return;
-        
-        // 1. Fill a list from 2 to end
         ArrayList<Integer> nums = new ArrayList<>();
         for (int i = 2; i <= end; i++) nums.add(i);
 
-        // 2. Start from first prime (2)
         for (int i = 0; i < nums.size(); i++) {
             int currentPrime = nums.get(i);
-            
-            // 3. Literally remove all multiples of currentPrime that come AFTER it
             Iterator<Integer> it = nums.iterator();
             while (it.hasNext()) {
                 int nextVal = it.next();
                 if (nextVal > currentPrime && nextVal % currentPrime == 0) {
-                    it.remove(); // This is the "removal" step you described
+                    it.remove();
                 }
             }
-            
-            // Optimization: Stop if currentPrime exceeds sqrt(end)
             if (currentPrime * currentPrime > end) break;
         }
 
-        // 4. Print remaining result in range
         for (int n : nums) {
             if (n >= start) System.out.print(n + " ");
+        }
+        System.out.println();
+    }
+
+    /**
+     * Method 5: Boolean List Sieve
+     * Logic: Uses ArrayList<Boolean> instead of primitive boolean[] array.
+     * TC: O(N log log N) - Competitive with Method 2, but slower due to autoboxing.
+     * SC: O(N) - High memory usage since each Boolean is an object (16-24 bytes).
+     */
+    public static void booleanListSieve(int start, int end) {
+        if (end < 2) return;
+        
+        // Java's ArrayList of Objects (Boolean wrappers)
+        List<Boolean> isPrime = new ArrayList<>(end + 1);
+        
+        // Initialize the list
+        for (int i = 0; i <= end; i++) {
+            isPrime.add(true);
+        }
+        
+        isPrime.set(0, false);
+        isPrime.set(1, false);
+
+        // Standard Sieve logic using List methods
+        for (int p = 2; p * p <= end; p++) {
+            if (isPrime.get(p)) {
+                for (int i = p * p; i <= end; i += p) {
+                    isPrime.set(i, false);
+                }
+            }
+        }
+
+        // Print results from the List
+        for (int i = Math.max(start, 2); i <= end; i++) {
+            if (isPrime.get(i)) {
+                System.out.print(i + " ");
+            }
         }
         System.out.println();
     }
