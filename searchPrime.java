@@ -23,17 +23,20 @@ public class searchPrime {
         System.out.println("\n1. Normal Method (Trial Division):");
         normalSieve(start, end);
 
-        System.out.println("\n2. Sieve of Eratosthenes (Boolean Array):");
+        System.out.println("\n2. Sieve of Eratosthenes (Optimized Sieve):");
         eratosthenesSieve(start, end);
 
         System.out.println("\n3. Linear Sieve (O(N)):");
         linearSieve(start, end);
 
-        System.out.println("\n4. Manual Deletion Sieve (Literal Removal):");
+        System.out.println("\n4. Manual Deletion Sieve (ArrayList<Integer>):");
         manualDeletionSieve(start, end);
 
-        System.out.println("\n5. Boolean List Sieve (Object-based Marking):");
+        System.out.println("\n5. Boolean List Sieve (ArrayList<Boolean>):");
         booleanListSieve(start, end);
+
+        System.out.println("\n6. Boolean Array Sieve (boolean[] primitive):");
+        booleanArraySieve(start, end);
     }
 
     /**
@@ -56,7 +59,7 @@ public class searchPrime {
     }
 
     /**
-     * Method 2: Sieve of Eratosthenes (Optimized with marking)
+     * Method 2: Sieve of Eratosthenes (Standard Optimized)
      * TC: O(N log log N), SC: O(N)
      */
     public static void eratosthenesSieve(int start, int end) {
@@ -106,8 +109,8 @@ public class searchPrime {
 
     /**
      * Method 4: Manual Deletion Sieve
-     * Logic: Literally "removes" multiples from a list one by one.
-     * TC: O(N^2) due to list shifts during removal.
+     * Logic: Literally removes elements from an ArrayList of Integers.
+     * TC: O(N^2) due to shifting, SC: O(N)
      */
     public static void manualDeletionSieve(int start, int end) {
         if (end < 2) return;
@@ -134,25 +137,17 @@ public class searchPrime {
 
     /**
      * Method 5: Boolean List Sieve
-     * Logic: Uses ArrayList<Boolean> instead of primitive boolean[] array.
-     * TC: O(N log log N) - Competitive with Method 2, but slower due to autoboxing.
-     * SC: O(N) - High memory usage since each Boolean is an object (16-24 bytes).
+     * Logic: Marks values in an ArrayList of Boolean Objects.
+     * TC: O(N log log N), SC: O(N)
      */
     public static void booleanListSieve(int start, int end) {
         if (end < 2) return;
-        
-        // Java's ArrayList of Objects (Boolean wrappers)
         List<Boolean> isPrime = new ArrayList<>(end + 1);
-        
-        // Initialize the list
-        for (int i = 0; i <= end; i++) {
-            isPrime.add(true);
-        }
+        for (int i = 0; i <= end; i++) isPrime.add(true);
         
         isPrime.set(0, false);
         isPrime.set(1, false);
 
-        // Standard Sieve logic using List methods
         for (int p = 2; p * p <= end; p++) {
             if (isPrime.get(p)) {
                 for (int i = p * p; i <= end; i += p) {
@@ -161,11 +156,36 @@ public class searchPrime {
             }
         }
 
-        // Print results from the List
         for (int i = Math.max(start, 2); i <= end; i++) {
-            if (isPrime.get(i)) {
-                System.out.print(i + " ");
+            if (isPrime.get(i)) System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+
+    /**
+     * Method 6: Boolean Array Sieve
+     * Logic: Marks values in a primitive boolean array.
+     * This is the primitive version of Method 5.
+     * TC: O(N log log N), SC: O(N)
+     */
+    public static void booleanArraySieve(int start, int end) {
+        if (end < 2) return;
+        boolean[] isPrime = new boolean[end + 1];
+        for (int i = 0; i <= end; i++) isPrime[i] = true;
+        
+        isPrime[0] = false;
+        isPrime[1] = false;
+
+        for (int p = 2; p * p <= end; p++) {
+            if (isPrime[p]) {
+                for (int i = p * p; i <= end; i += p) {
+                    isPrime[i] = false;
+                }
             }
+        }
+
+        for (int i = Math.max(start, 2); i <= end; i++) {
+            if (isPrime[i]) System.out.print(i + " ");
         }
         System.out.println();
     }
