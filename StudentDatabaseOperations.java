@@ -1,36 +1,36 @@
 import java.sql.*;
-// import java.sql.Connection;
-// import java.sql.DriverManager;
-// import java.sql.Statement;
-// import java.sql.PreparedStatement;
-// import java.sql.ParameterMetaData;
-// import java.sql.ResultSet;
 
-
+// Ye program students ka database banata hai aur usme data insert karta hai
+// ZENSAR_JAVA database me stds_nkocet table create hoti hai
 public class StudentDatabaseOperations {
     public static void main(String[] args) {
         String url="jdbc:mysql://localhost:3306/";
         String user="root";
-        String password="omkar@123";
+        String password="omkar@123";  // MySQL ka password
         String dbName = "ZENSAR_JAVA";
 try{
 
-    Class.forName("com.mysql.cj.jdbc.Driver");
+    Class.forName("com.mysql.cj.jdbc.Driver");  // MySQL driver load kiya
 
     Connection con = DriverManager.getConnection(url,user,password);
     System.out.println("Database connected successfully");
 
     Statement stmt=con.createStatement();
+    // Pehle database banaya agar exist nahi karta
     stmt.executeUpdate("create database if not exists " + dbName);
-    stmt.executeUpdate("use " + dbName);
-    stmt.executeUpdate("drop table if exists stds_nkocet");
+    stmt.executeUpdate("use " + dbName);  // database use karne ke liye
+    stmt.executeUpdate("drop table if exists stds_nkocet");  // purana table delete kar diya
+    
+    // Table create kiya - roll no, name aur stipend ke columns ke saath
     String createTableQuery="create table if not exists stds_nkocet (stds_no int primary key, stds_name varchar(100), stds_stipend double)";  
     stmt.executeUpdate(createTableQuery);
     System.out.println("Table created successfully");
 
+    // Prepared statement use kiya data insert karne ke liye - SQL injection se bachne ke liye
     PreparedStatement pst = con.prepareStatement("insert into stds_nkocet(stds_no,stds_name,stds_stipend) values(?,?,?)");  
 
 
+    // Pehla student - roll no 401
     pst.setInt(1,401);
     pst.setString(2,"omkar");
     pst.setDouble(3,10000);
@@ -77,22 +77,17 @@ try{
     pst.setDouble(3,90000);
     pst.executeUpdate();         
 
+    // Last student - roll no 410
     pst.setInt(1,410);
     pst.setString(2,"chetan");
     pst.setDouble(3,100000);     
     pst.executeUpdate();         
 
-    System.out.println("Data inserted successfully");
-
-    
-    
-
-
-
+    System.out.println("Data inserted successfully");  // sab kuch ho gaya to success message
 
 }
 catch(Exception e){
-e.printStackTrace();
+    e.printStackTrace();  // agar koi error aaye to print kar do
 }
     }
     
