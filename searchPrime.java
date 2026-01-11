@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class searchPrime {
     public static void main(String[] args) {
@@ -20,20 +20,25 @@ public class searchPrime {
             return;
         }
 
-        boolean[] isPrime = new boolean[end + 1];
-        Arrays.fill(isPrime, true);
-        isPrime[0] = isPrime[1] = false;
+        // Linear Sieve (O(N) Time Complexity)
+        // Har composite number exactly ek baar process hota hai
+        int[] minPrime = new int[end + 1];
+        ArrayList<Integer> primes = new ArrayList<>();
 
-        for (int p = 2; p * p <= end; p++) {
-            if (isPrime[p]) {
-                for (int i = p * p; i <= end; i += p)
-                    isPrime[i] = false;
+        for (int i = 2; i <= end; i++) {
+            if (minPrime[i] == 0) {
+                minPrime[i] = i;
+                primes.add(i);
+            }
+            for (int p : primes) {
+                if (p > minPrime[i] || (long)i * p > end) break;
+                minPrime[i * p] = p;
             }
         }
 
-        System.out.printf("Primes from %d to %d:\n", start, end);
-        for (int i = Math.max(start, 2); i <= end; i++) {
-            if (isPrime[i]) System.out.print(i + " ");
+        System.out.printf("Primes from %d to %d (using O(N) Linear Sieve):\n", start, end);
+        for (int p : primes) {
+            if (p >= start) System.out.print(p + " ");
         }
         System.out.println();
     }
